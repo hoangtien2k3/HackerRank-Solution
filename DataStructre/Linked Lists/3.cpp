@@ -1,6 +1,5 @@
 
-//! Link: https://www.hackerrank.com/challenges/insert-a-node-at-the-tail-of-a-linked-list/problem?isFullScreen=true
-//! Insert a Node at the Tail of a Linked List
+// Insert a node at the head of a linked list
 
 #include <bits/stdc++.h>
 
@@ -20,9 +19,11 @@ class SinglyLinkedListNode {
 class SinglyLinkedList {
     public:
         SinglyLinkedListNode *head;
+        SinglyLinkedListNode *tail;
 
         SinglyLinkedList() {
             this->head = nullptr;
+            this->tail = nullptr;
         }
 
 };
@@ -48,7 +49,7 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
     }
 }
 
-// Complete the insertNodeAtTail function below.
+// Complete the insertNodeAtHead function below.
 
 /*
  * For your reference:
@@ -59,18 +60,15 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  * };
  *
  */
-SinglyLinkedListNode* insertNodeAtTail(SinglyLinkedListNode* head, int data) {
-    SinglyLinkedListNode * newNode = new SinglyLinkedListNode(data);
-    if (head == NULL) {
-        head = newNode;
+SinglyLinkedListNode* insertNodeAtHead(SinglyLinkedListNode* llist, int data) {
+    SinglyLinkedListNode *newNode = new SinglyLinkedListNode(data);
+    if (llist == NULL) {
+        llist = newNode;
     } else {
-        SinglyLinkedListNode *p = head;
-        while(p->next != NULL) {
-            p = p->next;
-        }
-        p->next = newNode;
+        newNode->next = llist;
+        llist = newNode;
     }
-    return head;
+    return llist;
 }
 
 int main()
@@ -88,7 +86,7 @@ int main()
         cin >> llist_item;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     
-      	SinglyLinkedListNode* llist_head = insertNodeAtTail(llist->head, llist_item);
+      	SinglyLinkedListNode* llist_head = insertNodeAtHead(llist->head, llist_item);
         llist->head = llist_head;
     }
 
@@ -101,3 +99,5 @@ int main()
 
     return 0;
 }
+
+
