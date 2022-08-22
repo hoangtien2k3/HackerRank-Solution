@@ -91,7 +91,7 @@ int Size(SinglyLinkedListNode *llist) {
 }
 
 
-SinglyLinkedListNode* insertNodeAtPosition(SinglyLinkedListNode* llist, int data, int position) {
+SinglyLinkedListNode * insertNodeAtPosition(SinglyLinkedListNode * llist, int data, int position) {
     SinglyLinkedListNode *newNode = new SinglyLinkedListNode(data);
     int n = Size(llist);
     if (position < 0 || position > n + 1) return NULL;
