@@ -36,7 +36,6 @@ class Solution {
     Node * insert(Node * root, int data) {
         if (root == NULL) {
             Node *newNode = new Node(data);
-            // Node *newNode = (Node*)malloc(sizeof(Node));
             newNode->left = NULL;
             newNode->right = NULL;
             newNode->data = data;
