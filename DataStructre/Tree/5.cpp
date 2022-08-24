@@ -39,19 +39,23 @@ class Solution {
 
 
         //! in ra các nốt từ trái sang phải của cây nhị phân (dùng Dueue để thêm phần tử vào đầu và lấy ra phần tử ở vị trí đầu danh sách).
+        //* queue (FIFO): First In First Out: lấy ra ở dầu và cho ra ở đầu danh sách.
+        // ứng dụng của hàng đợi hai đầu.
+
         void levelOrder(Node * root) {
             queue<Node*> q;
-            q.push(root);
+            q.push(root); // cho node gốc vào cây
             
-            while (!q.empty()) {
-                Node* root = q.front(); // gán root bằng phần tử đầu cây bằng dueue
+            while (!q.empty()) { // 
+                Node *root = q.front(); // gán root bằng phần tử đầu cây bằng dueue
                 q.pop(); // xóa phân tử ở đầu đi
                 cout << root->data << ' ';
-                if (root->left) q.push(root->left); // đệ quy sang bên trái cây
-                if (root->right) q.push(root->right); // đệ quy sang bên phải của cây
+                if (root->left) q.push(root->left); // đệ quy sang bên trái cây.
+                if (root->right) q.push(root->right); // đệ quy sang bên phải của cây.
             }
 
         }
+
 
 }; //End of Solution
 
