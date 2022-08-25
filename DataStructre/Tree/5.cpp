@@ -2,7 +2,7 @@
 // Tree: Level Order Traversal
 //! MỘT BÀI RẤT HAY VỀ ỨNG DỤNG CỦA DUEUE TRONG CÂY.
 
-include <bits/stdc++.h>	
+#include <bits/stdc++.h>	
 
 using namespace std;
 
@@ -36,22 +36,35 @@ class Solution {
                return root;
            }
         }
-
-
-        //! in ra các nốt từ trái sang phải của cây nhị phân (dùng Dueue để thêm phần tử vào đầu và lấy ra phần tử ở vị trí đầu danh sách).
-        //* queue (FIFO): First In First Out: lấy ra ở dầu và cho ra ở đầu danh sách.
-        // ứng dụng của hàng đợi hai đầu.
+/*
+class Node {
+    public:
+        int data;
+        Node *left;
+        Node *right;
+        Node(int d) {
+            data = d;
+            left = NULL;
+            right = NULL;
+        }
+};
+*/
 
         void levelOrder(Node * root) {
             queue<Node*> q;
-            q.push(root); // cho node gốc vào cây
+            q.push(root); // push địa chỉ của root vào cây
             
-            while (!q.empty()) { // 
-                Node *root = q.front(); // gán root bằng phần tử đầu cây bằng dueue
-                q.pop(); // xóa phân tử ở đầu đi
-                cout << root->data << ' ';
-                if (root->left) q.push(root->left); // đệ quy sang bên trái cây.
-                if (root->right) q.push(root->right); // đệ quy sang bên phải của cây.
+            while (!q.empty()) { // nên hàm này vẫn rỗng, vì nó không chứa bất kỳ phần tử nào trong hàm cả, nên hàm vẫn rỗng và while vẫn chạy.
+                Node * root = q.front(); // khai báo root lưu trữ địa chỉ của phần tử đầu tiên lấy ra từ queue ban đầu.
+                q.pop(); // xóa cái đại chỉ của biến đầu tiên khỏi root đó đi, để queue trở thành hàng đợi rỗng.
+                
+                cout << root->data << ' '; // in ra cái node đó
+                
+                if (root->left) q.push(root->left); // cho cái root đó tiến tới bên trái.
+                
+                if (root->right) q.push(root->right); // cho cái root đó tiến tới bên phải của hàm.
+                
+                // => mục đích để cho nó in ra hết node bên trái và node bên phải.
             }
 
         }
@@ -77,3 +90,4 @@ int main() {
 	myTree.levelOrder(root);
     return 0;
 }
+
